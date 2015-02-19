@@ -69,11 +69,13 @@ void Sort::merge_sort_helper(int data[], int n)
 
 void Sort::merge_sort()
 {
+    assert(size>0);
     merge_sort_helper(array, size);
 }
 
 void Sort::insertion_sort()
 {
+    assert(size>0);
     for(int i=0; i<size-1; i++)
     {
         if(array[i+1]<array[i])
@@ -104,6 +106,7 @@ void Sort::swap(int& a, int& b)
 }
 void Sort::selection_sort()
 {
+    assert(size>0);
     int i, j, index_of_largest;
     int largest;
     if(size==0)
@@ -170,6 +173,7 @@ void Sort::quick_sort_helper(int data[], int n)
 }
 void Sort::quick_sort()
 {
+    assert(size>0);
     quick_sort_helper(array, size);
 }
 int Sort::get_size()const
@@ -184,6 +188,12 @@ int Sort::at(unsigned index) const
 }
 ostream& operator<<(ostream& out, const Sort& s)
 {
+    if(s.get_size()<0)
+    {
+        out<<"Empty array"<<endl;
+        return out;
+    }
+    
     for(int i=0; i<s.get_size(); i++)
     {
         out<<s.at(i)<<endl;
