@@ -11,10 +11,13 @@
 #include <ctime>
 #include "Sort.h"
 using namespace std;
+
 //----------------------CONSTANTS----------------------
 int const BIG = 1000;
 int const GIANT = 1000;
 double const SEC_TO_MILLISEC=1000;
+int const PRECISION = 3;
+
 int main()
 {
     
@@ -70,22 +73,27 @@ int main()
     clock_t end4 = clock();
     clock_t diff4 = end4-start4;
     
+    //calculate clocks per tick to milliseceonds for one loop per sort
     double time1 = ((((double)diff1)/CLOCKS_PER_SEC)*SEC_TO_MILLISEC)/GIANT;
     double time2 = ((((double)diff2)/CLOCKS_PER_SEC)*SEC_TO_MILLISEC)/GIANT;
     double time3 = ((((double)diff3)/CLOCKS_PER_SEC)*SEC_TO_MILLISEC)/GIANT;
     double time4 = ((((double)diff4)/CLOCKS_PER_SEC)*SEC_TO_MILLISEC)/GIANT;
     
+    //show 3 decimal places
     cout.setf(ios::fixed);
     cout.setf(ios::showpoint);
-    cout.precision(3);
+    cout.precision(PRECISION);
     
+    //display time each sort took for 1 loop in milliseconds for an array of size sort.get_size
     
-    cout<<"The insertion sort took: "<<time1<<" milliseconds, for an array of size "<< BIG <<endl;
-    cout<<"The selection sort took: "<<time2<<" milliseconds, for an array of size "<< BIG <<endl;
-    cout<<"The merge sort took: "<<time3<<" milliseconds, for an array of size "<< BIG <<endl;
-    cout<<"The quick sort took: "<<time4<<" milliseconds, for an array of size "<< BIG;
+    cout<<"The insertion sort took: "<<time1<<" milliseconds, for an array of size "<< sort1.get_size() <<endl;
+    cout<<"The selection sort took: "<<time2<<" milliseconds, for an array of size "<< sort2.get_size() <<endl;
+    cout<<"The merge sort took: "<<time3<<" milliseconds, for an array of size "<< sort3.get_size() <<endl;
+    cout<<"The quick sort took: "<<time4<<" milliseconds, for an array of size "<< sort4.get_size();
     
     cout<<endl;
+    
+    //system("PAUSE");
     return 0;
     
 }
